@@ -11,6 +11,8 @@ import { UsuarioService } from './service/usuario/usuario.service';
 import { AparelhoService } from './service/aparelho/aparelho.service';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+
 
 import {
   MatAutocompleteModule,
@@ -45,6 +47,7 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { LayoutComponent } from './layout/layout/layout.component';
 
 @NgModule({
   exports: [
@@ -86,7 +89,9 @@ export class MaterialModule { }
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,13 +101,15 @@ export class MaterialModule { }
     RouterModule.forRoot(AppRoutes, { useHash: true }),
     HttpModule,
     MaterialModule,
-    MatNativeDateModule,
+    MatNativeDateModule
   ],
   providers: [
     RestService,
     UsuarioService,
     AparelhoService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

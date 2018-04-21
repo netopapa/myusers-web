@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './layout/layout/layout.component';
 
 export const AppRoutes: Routes = [
     {
@@ -9,7 +10,7 @@ export const AppRoutes: Routes = [
     },
     {
         path: '',
-        component: AppComponent,
+        component: LayoutComponent,
         children: [
             {
                 path: 'aparelho',
