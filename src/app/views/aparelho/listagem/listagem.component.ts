@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AparelhoService } from '../../../service/aparelho/aparelho.service';
 
 @Component({
   selector: 'app-listagem',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListagemComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private service: AparelhoService
+  ) { }
 
   ngOnInit() {
+    this.service.getAll().subscribe(
+      success => {
+        console.log(success);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

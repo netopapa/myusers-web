@@ -5,18 +5,19 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 export const AparelhoRouter: Routes = [
     {
         path: '',
-        children: [{
-            path: 'registros',
-            component: ListagemComponent
-        },
-        {
-            path: 'cadastro',
-            component: CadastroComponent
-        },
-        {
-            path: 'cadastro/:id',
-            component: CadastroComponent
-        }
+        children: [
+            {
+                path: '',
+                component: ListagemComponent
+            },
+            {
+                path: 'form',
+                component: CadastroComponent
+            },
+            {
+                path: 'form/:id',
+                component: CadastroComponent
+            }
         ]
     }
 ];

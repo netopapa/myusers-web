@@ -6,6 +6,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { RestService } from './service/rest-service/rest.service';
+import { UsuarioService } from './service/usuario/usuario.service';
+import { AparelhoService } from './service/aparelho/aparelho.service';
 import { AppRoutes } from './app.routing';
 import { AppComponent } from './app.component';
 
@@ -95,7 +98,11 @@ export class MaterialModule { }
     MaterialModule,
     MatNativeDateModule,
   ],
-  providers: [],
+  providers: [
+    RestService,
+    UsuarioService,
+    AparelhoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
