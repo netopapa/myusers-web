@@ -33,7 +33,6 @@
                   </div>
                 </div>
               </div>
-
               <div class="row">
                   <div class="col s12">
                     Senha:
@@ -49,6 +48,16 @@
                       <div class="input-field inline">
                           <input type="number" name="codigo" [(ngModel)]="usuario.cod_pessoa" min="0" max="9999999" required>
                       </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col s12">
+                        Aparelhos:
+                        <mat-form-field>
+                            <mat-select placeholder="Aparelhos" name="aparelhos" [(ngModel)]="usuario.aparelhos" multiple>
+                              <mat-option *ngFor="let aparelho of aparelhos" [value]="aparelho">{{aparelho.descricao_aparelho}}</mat-option>
+                            </mat-select>
+                          </mat-form-field>
                     </div>
                   </div>
             

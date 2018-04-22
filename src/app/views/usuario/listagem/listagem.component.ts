@@ -15,7 +15,7 @@ import { FeedbackService } from '../../../service/feedback/feedback.service';
 })
 export class ListagemComponent implements OnInit, AfterViewInit {
 
-  private displayedColumns = ['nome_usuario', 'login', 'email', 'cod_pessoa', 'acoes'];
+  private displayedColumns = ['nome_usuario', 'login', 'email', 'cod_pessoa', 'aparelhosTxt', 'acoes'];
   private dataSource: MatTableDataSource<Usuario>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -46,11 +46,26 @@ getUsuarios(): void {
   this.service.getAll().subscribe(
     success => {
       this.dataSource.data = success;
+      this.listAparelhos();
     },
     error => {
       console.log(error);
     }
   );
+}
+
+listAparelhos(): void {
+  for (let i = 0; i < this.dataSource.data.length; i++) {
+    let aparelhos = '';
+    for (let j = 0; j < this.dataSource.data[i].aparelhos.length; j++) {
+        aparelhos += this.dataSource.data[i].aparelhos[j].descricao_aparelho;
+
+        if (j < this.dataSource.data[i].aparelhos.length - 1) {
+          aparelhos += ', ';
+        }
+    }
+    this.dataSource.data[i].aparelhosTxt = aparelhos;
+  }
 }
 
 deleteThis(id: number): void {

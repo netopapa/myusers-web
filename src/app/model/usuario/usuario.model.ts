@@ -12,6 +12,7 @@ export class Usuario {
     status_usuario = '';
     cod_pessoa: number;
     aparelhos: Aparelho[];
+    aparelhosTxt = '';
 
     constructor() {
         this.aparelhos = [];

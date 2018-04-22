@@ -45,6 +45,11 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Código </mat-header-cell>
                     <mat-cell *matCellDef="let usuario"> {{usuario.cod_pessoa}} </mat-cell>
                 </ng-container>
+
+                <ng-container matColumnDef="aparelhosTxt">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Aparelhos </mat-header-cell>
+                    <mat-cell *matCellDef="let usuario"> {{usuario.aparelhosTxt}} </mat-cell>
+                </ng-container>
               
                 <ng-container matColumnDef="acoes">
                     <mat-header-cell class="text-right" *matHeaderCellDef>Ações</mat-header-cell>
