@@ -103,7 +103,7 @@ export class RestService {
       const body = error.json() || '';
       errMsg = body.msg;
     } else {
-      errMsg = error.message ? error.message : error.toString();
+      errMsg = error.msg ? error.msg : error.toString();
     }
 
     if (errMsg === undefined) {
