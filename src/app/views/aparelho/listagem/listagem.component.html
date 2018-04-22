@@ -39,10 +39,10 @@
                 <ng-container matColumnDef="acoes">
                     <mat-header-cell class="text-right" *matHeaderCellDef>Ações</mat-header-cell>
                     <mat-cell class="text-right acoes" *matCellDef="let aparelho">
-                      <a class="btn-floating btn-small waves-effect waves-light green">
+                      <a class="btn-floating btn-small waves-effect waves-light green" matTooltip="Editar" matTooltipPosition="left" (click)="editThis(aparelho.id_aparelho)">
                           <i class="fa fa-pencil" aria-hidden="true"></i>
                       </a>
-                      <a class="btn-floating btn-small waves-effect waves-light red">
+                      <a class="btn-floating btn-small waves-effect waves-light red" matTooltip="Deletar" matTooltipPosition="left" (click)="deleteThis(aparelho.id_aparelho)">
                           <i class="fa fa-trash" aria-hidden="true"></i>
                       </a>
                     </mat-cell>

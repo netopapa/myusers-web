@@ -34,7 +34,7 @@ export class AparelhoService extends RestService {
     return this.put(updateUrl, aparelho);
   }
 
-  public deleteLocal(id: number): Observable<any> {
+  public remove(id: number): Observable<any> {
     const deleteURL = this.baseURL;
     return this.deleteServiceWithId(deleteURL, id);
   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AparelhoService } from '../../../service/aparelho/aparelho.service';
 import { Aparelho } from '../../../model/aparelho/aparelho.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FeedbackService } from '../../../service/feedback/feedback.service';
 
 declare var $: any;
 
@@ -14,6 +15,7 @@ export class CadastroComponent implements OnInit {
 
     private aparelho: Aparelho;
 
+    private edit: boolean;
     private txtBtnSubmit = '';
     private txtHeader = '';
 
@@ -21,6 +23,7 @@ export class CadastroComponent implements OnInit {
     private service: AparelhoService,
     private route: ActivatedRoute,
     private router: Router,
+    private feedback: FeedbackService
   ) { }
 
   ngOnInit() {
@@ -33,10 +36,12 @@ export class CadastroComponent implements OnInit {
     this.route.params.subscribe(
       (params: any) => {
           if (params['id'] != null) {
+              this.edit = true;
               this.txtBtnSubmit = 'editar';
               this.txtHeader = 'Edição';
               this.getAparelho(params['id']);
-          } else {
+            } else {
+              this.edit = false;
               this.txtBtnSubmit = 'cadastrar';
               this.txtHeader = 'Cadastro';
           }
@@ -56,14 +61,29 @@ export class CadastroComponent implements OnInit {
   }
 
   save(aparelho: Aparelho): void {
-    this.service.save(aparelho).subscribe(
-      success => {
-        console.log(success);
-      },
-      error => {
-        console.log(error);
-      }
-    );
+
+    if (this.edit) {
+      this.service.update(aparelho).subscribe(
+        success => {
+          this.feedback.openSnackBar(success.msg);
+          this.router.navigate(['/aparelho']);
+        },
+        error => {
+          this.feedback.openSnackBar(error);
+        }
+      );
+    } else {
+      this.service.save(aparelho).subscribe(
+        success => {
+          this.feedback.openSnackBar(success.msg);
+          this.router.navigate(['/aparelho']);
+        },
+        error => {
+          this.feedback.openSnackBar(error);
+        }
+      );
+    }
+
   }
 
 }

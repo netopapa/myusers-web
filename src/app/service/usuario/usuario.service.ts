@@ -12,10 +12,10 @@ export class UsuarioService extends RestService {
   baseURL = Constant.BASE_URL + Constant.USUARIO;
 
   constructor(http: Http) {
-    super(http);
+    super(http);  
    }
 
-   public getAll(): Observable<Usuario[]> {
+  public getAll(): Observable<Usuario[]> {
     return this.get(this.baseURL);
   }
 
@@ -34,7 +34,7 @@ export class UsuarioService extends RestService {
     return this.put(updateUrl, usuario);
   }
 
-  public deleteLocal(id: number): Observable<any> {
+  public remove(id: number): Observable<any> {
     const deleteURL = this.baseURL;
     return this.deleteServiceWithId(deleteURL, id);
   }

@@ -52,8 +52,9 @@ export class RestService {
 
   put(url: string, param: any): Observable<any> {
     const body = JSON.stringify(param);
+    url += '?f=update';
     return this.http
-      .put(url, body, this.options)
+      .post(url, body)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -86,7 +87,7 @@ export class RestService {
   // HTTP DELETE usando Observable com ID como parâmetro
   deleteServiceWithId(url: string, val: number): Observable<any> {
     return this.http
-      .delete(url + '?id=' + val, this.options)
+      .delete(url + '?id=' + val)
       .map(this.extractData)
       .catch(this.handleError);
   }
@@ -97,11 +98,10 @@ export class RestService {
   }
 
   private handleError(error: Response | any) {
-    console.log(error);
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
-      errMsg = body.message;
+      errMsg = body.msg;
     } else {
       errMsg = error.message ? error.message : error.toString();
     }

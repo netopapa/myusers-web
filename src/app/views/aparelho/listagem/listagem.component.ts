@@ -4,6 +4,7 @@ import { MatTableDataSource, MatPaginator, MatSort, PageEvent } from '@angular/m
 import { Aparelho } from '../../../model/aparelho/aparelho.model';
 import { Router } from '@angular/router';
 import { AfterViewInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { FeedbackService } from '../../../service/feedback/feedback.service';
 
 declare var $: any;
 
@@ -22,7 +23,8 @@ export class ListagemComponent implements OnInit, AfterViewInit {
 
   constructor(
     private service: AparelhoService,
-    private router: Router
+    private router: Router,
+    private feedback: FeedbackService
   ) { }
 
   ngOnInit() {
@@ -47,6 +49,18 @@ export class ListagemComponent implements OnInit, AfterViewInit {
       },
       error => {
         console.log(error);
+      }
+    );
+  }
+
+  deleteThis(id: number): void {
+    this.service.remove(id).subscribe(
+      success => {
+        this.feedback.openSnackBar(success.msg);
+        this.getAparelhos();
+      },
+      error => {
+        this.feedback.openSnackBar(error);
       }
     );
   }

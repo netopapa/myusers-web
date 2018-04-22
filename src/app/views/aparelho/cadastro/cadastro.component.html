@@ -8,17 +8,21 @@
       <form #aparelhoForm="ngForm">
 
           <div class="row">
-            <div class="input-field col s12">
-              <input id="descricao" type="text" name="descricao" [(ngModel)]="aparelho.descricao_aparelho" maxlength="15" required>
-              <label for="descricao">Descrição</label>
+            <div class="col s12">
+              Descrição:
+              <div class="input-field inline">
+                  <input id="descricao" type="text" name="descricao" [(ngModel)]="aparelho.descricao_aparelho" maxlength="15" required>
+              </div>
             </div>
           </div>
 
           <div class="row">
-            <div class="input-field col s12">
-              <input id="codifo" type="text" name="codifo" [(ngModel)]="aparelho.codigo_aparelho" maxlength="100" required>
-              <label for="codifo">Código</label>
-            </div>
+              <div class="col s12">
+                  Código:
+                  <div class="input-field inline">
+                      <input id="codifo" type="text" name="codifo" [(ngModel)]="aparelho.codigo_aparelho" maxlength="100" required>
+                  </div>
+                </div>
           </div>
           
           <div class="row">
