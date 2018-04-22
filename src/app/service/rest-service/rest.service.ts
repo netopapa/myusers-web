@@ -45,7 +45,7 @@ export class RestService {
   post(url: string, param: any): Observable<any> {
     const body = JSON.stringify(param);
     return this.http
-      .post(url, body, this.optionsHeader())
+      .post(url, body)
       .map(this.extractData)
       .catch(this.handleError);
   }
