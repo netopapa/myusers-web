@@ -21,3 +21,7 @@ section {
 .brand-logo {
     padding: 8px !important;
 }
+
+.input-field.inline > input {
+    width: 600px !important;
+}
