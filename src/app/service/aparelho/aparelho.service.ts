@@ -5,6 +5,7 @@ import { RestService } from '../rest-service/rest.service';
 import { Aparelho } from '../../model/aparelho/aparelho.model';
 import { Constant } from '../../constant/constant';
 import { Observable } from 'rxjs/Observable';
+import { Usuario } from '../../model/usuario/usuario.model';
 
 @Injectable()
 export class AparelhoService extends RestService {
@@ -27,6 +28,11 @@ export class AparelhoService extends RestService {
   public save(aparelho: Aparelho): Observable<any> {
     const saveUrl = this.baseURL;
     return this.post(saveUrl, aparelho);
+  }
+
+  public findByUser(usuario: Usuario): Observable<any> {
+    const findUrl = this.baseURL + '?f=findByUsuario';
+    return this.post(findUrl, usuario);
   }
 
   public update(aparelho: Aparelho): Observable<any> {

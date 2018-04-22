@@ -4,21 +4,32 @@
         <div class="divider"></div>
         <div class="space"></div>
         <div class="row">
-            <div class="col s6">
-                <form>
-                    <div class="row">
-                        <div class="col s6">
-                            <input type="text" name="search" placeholder="Filtre por aparelhos">
-                        </div>
-                        <div class="col s2">
-                            <a class="btn btn-small waves-effect waves-light">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </div>
-                    </div>
-                </form>
+            <div class="col s4">
+                Filtre por usuários:
+                <mat-form-field>
+                    <mat-select name="usuarios" [(ngModel)]="usuarioSelecionado" (ngModelChange)="filtraPorUsuario()">
+                        <mat-option>Todos Usuários</mat-option>
+                        <mat-option *ngFor="let usuario of usuarios" [value]="usuario">
+                            {{usuario.nome_usuario}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
-            <div class="col s6">
+            <div class="col s5 actions">
+                <button class="waves-effect waves-light btn right purple" (click)="sharePDF()">
+                    <i class="fa fa-share" aria-hidden="true"></i> PDF
+                </button>
+
+                <button class="waves-effect waves-light btn right purple" (click)="shareTXT()">
+                        <i class="fa fa-share" aria-hidden="true"></i> TXT
+                    </button>
+
+
+                <button class="waves-effect waves-light btn right purple" (click)="shareCSV()">
+                        <i class="fa fa-share" aria-hidden="true"></i> CSV
+                    </button>
+            </div>
+            <div class="col s3">
                 <a [routerLink]="['/aparelho/form']" class="waves-effect waves-light btn right"><i class="fa fa-plus"></i> Aparelho</a>
             </div>
         </div>

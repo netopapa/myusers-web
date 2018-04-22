@@ -25,3 +25,11 @@ section {
 .input-field.inline > input {
     width: 600px !important;
 }
+
+.actions > button{
+    margin: 0 5px;
+}
+
+mat-select span {
+    color: #000000 !important;
+}

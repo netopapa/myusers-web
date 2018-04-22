@@ -2,7 +2,7 @@ import { Aparelho } from '../aparelho/aparelho.model';
 
 export class Usuario {
     id_usuario: number;
-    nome_aparelho = '';
+    nome_usuario = '';
     login = '';
     email = '';
     senha = '';
