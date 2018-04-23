@@ -25,7 +25,12 @@
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div class="col s6">
+            <div class="col s3">
+                <button class="waves-effect waves-light btn right purple" (click)="sharePDF()">
+                    <i class="fa fa-share" aria-hidden="true"></i> PDF
+                </button>
+            </div>
+            <div class="col s3">
                 <a [routerLink]="['/usuario/form']" class="waves-effect waves-light btn right">
                     <i class="fa fa-plus"></i> Usuário</a>
             </div>

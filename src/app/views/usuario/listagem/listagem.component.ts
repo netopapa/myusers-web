@@ -9,6 +9,7 @@ import { UsuarioService } from '../../../service/usuario/usuario.service';
 import { FeedbackService } from '../../../service/feedback/feedback.service';
 import { Perfil } from '../../../model/perfil/perfil.model';
 import { PerfilService } from '../../../service/perfil/perfil.service';
+import { RelatorioService } from '../../../service/relatorio/relatorio.service';
 
 @Component({
   selector: 'app-listagem',
@@ -28,6 +29,7 @@ export class ListagemComponent implements OnInit, AfterViewInit {
   constructor(
     private service: UsuarioService,
     private perfilService: PerfilService,
+    private relatorioService: RelatorioService,
     private router: Router,
     private feedback: FeedbackService
   ) { }
@@ -118,6 +120,18 @@ export class ListagemComponent implements OnInit, AfterViewInit {
       );
     }
 
+  }
+
+  sharePDF(): void {
+    this.relatorioService.pdfListUser(this.dataSource.data).subscribe(
+      success => {
+        this.feedback.openSnackBar('PDF gerado na pasta do projeto');
+      },
+      error => {
+        console.log(error);
+        this.feedback.openSnackBar('PDF gerado na pasta do projeto');
+      }
+    );
   }
 
   deleteThis(id: number): void {
