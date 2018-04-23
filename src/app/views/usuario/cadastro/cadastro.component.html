@@ -1,72 +1,82 @@
 <section id="usuario-form">
-    <div class="card blue-gray darken-1">
-      <h3 class=header>Usuários <span class="small"> - {{txtHeader}}</span></h3>
-      <div class="divider"></div>
-      <div class="space"></div>
-  
-      <div class="card-content">
-        <form #usuarioForm="ngForm">
-  
-            <div class="row">
-              <div class="col s12">
-                Nome:
-                <div class="input-field inline">
-                    <input type="text" name="nome" [(ngModel)]="usuario.nome_usuario" maxlength="60" required>
-                </div>
-              </div>
-            </div>
-  
-            <div class="row">
-                <div class="col s12">
-                    login:
-                    <div class="input-field inline">
-                        <input type="text" name="login" [(ngModel)]="usuario.login" maxlength="12" required>
-                    </div>
-                  </div>
-            </div>
+  <div class="card blue-gray darken-1">
+    <h3 class=header>Usuários
+      <span class="small"> - {{txtHeader}}</span>
+    </h3>
+    <div class="divider"></div>
+    <div class="space"></div>
 
-            <div class="row">
-                <div class="col s12">
-                  Email:
-                  <div class="input-field inline">
-                      <input type="email" name="email" [(ngModel)]="usuario.email" maxlength="60" required>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                  <div class="col s12">
-                    Senha:
-                    <div class="input-field inline">
-                        <input type="password" name="senha" [(ngModel)]="usuario.senha" maxlength="45" required>
-                    </div>
-                  </div>
-                </div>
+    <div class="card-content">
+      <form #usuarioForm="ngForm">
 
-                <div class="row">
-                    <div class="col s12">
-                      Código:
-                      <div class="input-field inline">
-                          <input type="number" name="codigo" [(ngModel)]="usuario.cod_pessoa" min="0" max="9999999" required>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col s12">
-                        Aparelhos:
-                        <mat-form-field>
-                            <mat-select placeholder="Aparelhos" name="aparelhos" [(ngModel)]="usuario.aparelhos" multiple>
-                              <mat-option *ngFor="let aparelho of aparelhos" [value]="aparelho">{{aparelho.descricao_aparelho}}</mat-option>
-                            </mat-select>
-                          </mat-form-field>
-                    </div>
-                  </div>
-            
-            <div class="row">
-              <div class="col s12 center-align">
-                  <button class="waves-effect waves-light btn green" type="submit" [disabled]="!usuarioForm.form.valid" (click)="save(usuario)">{{txtBtnSubmit}}</button>
-              </div>
+        <div class="row">
+          <div class="col s12">
+            Nome:
+            <div class="input-field inline">
+              <input type="text" name="nome" [(ngModel)]="usuario.nome_usuario" maxlength="60" required>
             </div>
-        </form>
-      </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            login:
+            <div class="input-field inline">
+              <input type="text" name="login" [(ngModel)]="usuario.login" maxlength="12" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            Email:
+            <div class="input-field inline">
+              <input type="email" name="email" [(ngModel)]="usuario.email" maxlength="60" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+            Senha:
+            <div class="input-field inline">
+              <input type="password" name="senha" [(ngModel)]="usuario.senha" maxlength="45" required>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12">
+            Código:
+            <div class="input-field inline">
+              <input type="number" name="codigo" [(ngModel)]="usuario.cod_pessoa" min="0" max="9999999" required>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s6">
+            Perfis:
+            <mat-form-field>
+              <mat-select placeholder="Perfil" name="perfil" [(ngModel)]="usuario.perfis" multiple>
+                <mat-option *ngFor="let perfil of perfis" [value]="perfil">{{perfil.nome_perfil}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col s6">
+            Aparelhos:
+            <mat-form-field>
+              <mat-select placeholder="Aparelhos" name="aparelhos" [(ngModel)]="usuario.aparelhos" multiple>
+                <mat-option *ngFor="let aparelho of aparelhos" [value]="aparelho">{{aparelho.descricao_aparelho}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 center-align">
+            <button class="waves-effect waves-light btn green" type="submit" [disabled]="!usuarioForm.form.valid" (click)="save(usuario)">{{txtBtnSubmit}}</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-  </section>
+</section>

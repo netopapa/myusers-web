@@ -1,4 +1,5 @@
 import { Aparelho } from '../aparelho/aparelho.model';
+import { Perfil } from '../perfil/perfil.model';
 
 export class Usuario {
     id_usuario: number;
@@ -13,9 +14,12 @@ export class Usuario {
     cod_pessoa: number;
     aparelhos: Aparelho[];
     aparelhosTxt = '';
+    perfis: Perfil[];
+    perfisTxt = '';
 
     constructor() {
         this.aparelhos = [];
+        this.perfis = [];
         this.data_criacao = new Date();
     }
 }

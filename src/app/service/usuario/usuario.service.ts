@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
 import { RestService } from '../rest-service/rest.service';
-import { Usuario} from '../../model/usuario/usuario.model';
+import { Usuario } from '../../model/usuario/usuario.model';
 import { Constant } from '../../constant/constant';
 import { Observable } from 'rxjs/Observable';
+import { Perfil } from '../../model/perfil/perfil.model';
 
 @Injectable()
 export class UsuarioService extends RestService {
@@ -12,8 +13,8 @@ export class UsuarioService extends RestService {
   baseURL = Constant.BASE_URL + Constant.USUARIO;
 
   constructor(http: Http) {
-    super(http);  
-   }
+    super(http);
+  }
 
   public getAll(): Observable<Usuario[]> {
     return this.get(this.baseURL);
@@ -22,6 +23,11 @@ export class UsuarioService extends RestService {
   public getOne(id: number): Observable<Usuario> {
     const getOneUrl = `${this.baseURL}?id=${id}`;
     return this.get(getOneUrl);
+  }
+
+  public findByPerfil(perfil: Perfil): Observable<any> {
+    const findUrl = this.baseURL + '?f=findByPerfil';
+    return this.post(findUrl, perfil);
   }
 
   public save(usuario: Usuario): Observable<any> {

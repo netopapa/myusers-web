@@ -7,6 +7,8 @@ import { UsuarioService } from '../../../service/usuario/usuario.service';
 import { FeedbackService } from '../../../service/feedback/feedback.service';
 import { Aparelho } from '../../../model/aparelho/aparelho.model';
 import { AparelhoService } from '../../../service/aparelho/aparelho.service';
+import { PerfilService } from '../../../service/perfil/perfil.service';
+import { Perfil } from '../../../model/perfil/perfil.model';
 
 @Component({
   selector: 'app-cadastro',
@@ -17,6 +19,7 @@ export class CadastroComponent implements OnInit {
 
   private usuario: Usuario;
   private aparelhos: Aparelho[];
+  private perfis: Perfil[];
 
     private edit: boolean;
     private txtBtnSubmit = '';
@@ -25,6 +28,7 @@ export class CadastroComponent implements OnInit {
   constructor(
     private service: UsuarioService,
     private aparelhoService: AparelhoService,
+    private perfilService: PerfilService,
     private route: ActivatedRoute,
     private router: Router,
     private feedback: FeedbackService
@@ -35,6 +39,7 @@ export class CadastroComponent implements OnInit {
     this.aparelhos = [];
 
     this.getAparelhos();
+    this.getPerfis();
     this.welcome();
   }
 
@@ -59,6 +64,17 @@ export class CadastroComponent implements OnInit {
     this.aparelhoService.getAll().subscribe(
       success => {
         this.aparelhos = success;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  getPerfis(): void {
+    this.perfilService.getAll().subscribe(
+      success => {
+        this.perfis = success;
       },
       error => {
         console.log(error);

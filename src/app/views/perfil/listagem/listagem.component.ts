@@ -27,7 +27,7 @@ export class ListagemComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Perfil>();
-    this.dataSource.data = new Array<Perfil>();
+    this.dataSource.data = [];
     this.paginator.pageSize = 10;
     this.paginator._intl.itemsPerPageLabel = 'Itens por página';
     this.getperfils();

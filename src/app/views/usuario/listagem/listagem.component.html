@@ -1,10 +1,12 @@
 <section id="usuarios">
     <div class="card blue-gray darken-1">
-        <h3 class=header>Usuários <span class="small"> - painel principal</span></h3>
+        <h3 class=header>Usuários
+            <span class="small"> - painel principal</span>
+        </h3>
         <div class="divider"></div>
         <div class="space"></div>
         <div class="row">
-            <div class="col s6">
+            <div class="col s3">
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="filtro" type="text" (keyup)="applyFilter($event.target.value)">
@@ -12,8 +14,20 @@
                     </div>
                 </div>
             </div>
+            <div class="col s3">
+                Filtre por Perfil:
+                <mat-form-field>
+                    <mat-select name="slc_perfis" [(ngModel)]="perfilSelecionado" (ngModelChange)="filtraPorPerfil()">
+                        <mat-option>Todos Perfis</mat-option>
+                        <mat-option *ngFor="let perfil of perfis" [value]="perfil">
+                            {{perfil.nome_perfil}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
             <div class="col s6">
-                <a [routerLink]="['/usuario/form']" class="waves-effect waves-light btn right"><i class="fa fa-plus"></i> Usuário</a>
+                <a [routerLink]="['/usuario/form']" class="waves-effect waves-light btn right">
+                    <i class="fa fa-plus"></i> Usuário</a>
             </div>
         </div>
 
@@ -24,7 +38,7 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Nome </mat-header-cell>
                     <mat-cell *matCellDef="let usuario"> {{usuario.nome_usuario}} </mat-cell>
                 </ng-container>
-              
+
                 <ng-container matColumnDef="login">
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Login </mat-header-cell>
                     <mat-cell *matCellDef="let usuario"> {{usuario.login}} </mat-cell>
@@ -44,26 +58,30 @@
                     <mat-header-cell *matHeaderCellDef mat-sort-header> Aparelhos </mat-header-cell>
                     <mat-cell *matCellDef="let usuario"> {{usuario.aparelhosTxt}} </mat-cell>
                 </ng-container>
-              
+
+                <ng-container matColumnDef="perfisTxt">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Perfis </mat-header-cell>
+                    <mat-cell *matCellDef="let usuario"> {{usuario.perfisTxt}} </mat-cell>
+                </ng-container>
+
                 <ng-container matColumnDef="acoes">
                     <mat-header-cell class="text-right" *matHeaderCellDef>Ações</mat-header-cell>
                     <mat-cell class="text-right acoes" *matCellDef="let usuario">
-                      <a class="btn-floating btn-small waves-effect waves-light green" matTooltip="Editar" matTooltipPosition="left" (click)="editThis(usuario.id_usuario)">
-                          <i class="fa fa-pencil" aria-hidden="true"></i>
-                      </a>
-                      <a class="btn-floating btn-small waves-effect waves-light red" matTooltip="Deletar" matTooltipPosition="left" (click)="deleteThis(usuario.id_usuario)">
-                          <i class="fa fa-trash" aria-hidden="true"></i>
-                      </a>
+                        <a class="btn-floating btn-small waves-effect waves-light green" matTooltip="Editar" matTooltipPosition="left" (click)="editThis(usuario.id_usuario)">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn-floating btn-small waves-effect waves-light red" matTooltip="Deletar" matTooltipPosition="left" (click)="deleteThis(usuario.id_usuario)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
                     </mat-cell>
                 </ng-container>
-              
+
                 <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                 <mat-row *matRowDef="let usuario; columns: displayedColumns;">
                 </mat-row>
             </mat-table>
-                  
-             <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
         </div>
     </div>
 </section>
-
