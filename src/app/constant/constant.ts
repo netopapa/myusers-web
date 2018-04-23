@@ -5,4 +5,5 @@ export const Constant = {
     USUARIO: 'usuario.php',
     APARELHO: 'aparelho.php',
     RELATORIO: 'relatorio.php',
+    PERFIL: 'perfil.php',
 };

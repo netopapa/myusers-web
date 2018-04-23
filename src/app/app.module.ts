@@ -6,15 +6,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+import { AppRoutes } from './app.routing';
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LayoutComponent } from './layout/layout/layout.component';
+
 import { RestService } from './service/rest-service/rest.service';
 import { UsuarioService } from './service/usuario/usuario.service';
 import { AparelhoService } from './service/aparelho/aparelho.service';
 import { FeedbackService } from './service/feedback/feedback.service';
 import { RelatorioService } from './service/relatorio/relatorio.service';
-import { AppRoutes } from './app.routing';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { LayoutComponent } from './layout/layout/layout.component';
+import { PerfilService } from './service/perfil/perfil.service';
 
 
 import {
@@ -110,7 +112,8 @@ export class MaterialModule { }
     UsuarioService,
     AparelhoService,
     FeedbackService,
-    RelatorioService
+    RelatorioService,
+    PerfilService
   ],
   bootstrap: [
     AppComponent

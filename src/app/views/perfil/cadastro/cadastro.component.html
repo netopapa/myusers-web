@@ -1,0 +1,27 @@
+<section id="perfil-form">
+  <div class="card blue-gray darken-1">
+    <h3 class=header>Perfis <span class="small"> - {{txtHeader}}</span></h3>
+    <div class="divider"></div>
+    <div class="space"></div>
+
+    <div class="card-content">
+      <form #perfilForm="ngForm">
+
+          <div class="row">
+            <div class="col s12">
+              Nome:
+              <div class="input-field inline">
+                  <input type="text" name="nome" [(ngModel)]="perfil.nome_perfil" maxlength="60" required>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row">
+            <div class="col s12 center-align">
+                <button class="waves-effect waves-light btn green" type="submit" [disabled]="!perfilForm.form.valid" (click)="save(perfil)">{{txtBtnSubmit}}</button>
+            </div>
+          </div>
+      </form>
+    </div>
+</div>
+</section>

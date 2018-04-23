@@ -19,6 +19,10 @@ export const AppRoutes: Routes = [
             {
                 path: 'usuario',
                 loadChildren: './views/usuario/usuario.module#UsuarioModule'
+            },
+            {
+                path: 'perfil',
+                loadChildren: './views/perfil/perfil.module#PerfilModule'
             }
         ]
     }
